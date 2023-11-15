@@ -24,8 +24,8 @@ void detalle(){
 }
 
 void setup() {
-    FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, NUM_LEDS);
     Serial.begin(9600);
+    FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, NUM_LEDS);
     pinMode(xPin, INPUT);
     pinMode(yPin, INPUT);
     pinMode(buttonPin, INPUT_PULLUP);//boton joystic en pull-up
