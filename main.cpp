@@ -36,10 +36,10 @@ void setup() {
 
 void loop()//Menu
 {
-  detalle();
+  //detalle();
   lcd.clear();
   lcd.setCursor(0,0);
-  lcd.print(">BIENVENIDO");
+  lcd.print("BIENVENIDO");
   delay(2000);
   lcd.clear();
   lcd.setCursor(0,0);
@@ -48,7 +48,8 @@ void loop()//Menu
     lcd.print(" S A L D O ");
     lcd.setCursor(1,1);
     lcd.print(" J U G A R");
-  detalle();
+  delay(2000);
+  //detalle();
   int i=0; //cursor del menu
   while(presionado==0){
     xPosition = analogRead(xPin);
