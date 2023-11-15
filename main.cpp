@@ -34,9 +34,8 @@ void setup() {
     attachInterrupt(digitalPinToInterrupt(buttonPin),button,FALLING);
 }
 
-void loop()//Menu
-{
-  //detalle();
+void loop() { //Menu
+  int i=0;
   lcd.clear();
   lcd.setCursor(0,0);
   lcd.print("BIENVENIDO");
@@ -48,35 +47,53 @@ void loop()//Menu
     lcd.print(" S A L D O ");
     lcd.setCursor(1,1);
     lcd.print(" J U G A R");
-  delay(2000);
-  //detalle();
-  int i=0; //cursor del menu
+    delay(2000);
   while(presionado==0){
     xPosition = analogRead(xPin);
     yPosition = analogRead(yPin);
-    if (xPosition>=4000 || yPosition>=4000)//joystic hacia la derecha o abajo = movimiento hacia abajo
-    {
-      i=1;
-      lcd.setCursor(0,0);
-      lcd.print("> J U G A R");
-      delay(300);
-    }
-    if (xPosition<=2000 || yPosition<=2000)//joystic hacia la izquierda o arriba = movimiento hacia arriba
+    //Serial.print(xPosition);
+    //Serial.print(yPosition);
+    //delay(1000);
+    if (xPosition>=3000 || yPosition>=3000)//joystic hacia la derecha o abajo = movimiento hacia abajoxPosition>=4000 || yPosition>=4000
     {
       i=0;
+      lcd.clear();
+      lcd.setCursor(0,0);
+      lcd.print(">");
+      lcd.setCursor(1,0);
+      lcd.print(" S A L D O ");
+      lcd.setCursor(1,1);
+      lcd.print(" J U G A R");
+      delay(100);
+    }
+    if (xPosition<=1000 || yPosition<=1000)//joystic hacia la izquierda o arriba = movimiento hacia arribaxPosition<=2000 || yPosition<=2000
+    {
+      i=1;
+      lcd.clear();
       lcd.setCursor(0,1);
-      lcd.print("> S A L D O");
-      delay(300);
+      lcd.print(">");
+      lcd.setCursor(1,0);
+      lcd.print(" S A L D O ");
+      lcd.setCursor(1,1);
+      lcd.print(" J U G A R");
+      delay(100);
     }
     else {;};
   };
-  if (i=1){
+  if (i==1){
     int a=play();
+    //lcd.clear();
+    //lcd.setCursor(0,0);
+    //lcd.print("A JUGAR");
+    //delay(2000);
+    presionado=0;
   }
-  if (i=0){
-  lcd.clear();
-  lcd.setCursor(0,0);
-  lcd.print("EN DESARROLLO");
+  if (i==0){
+    lcd.clear();
+    lcd.setCursor(0,0);
+    lcd.print("EN DESARROLLO");
+    delay(2000);
+    presionado=0;
   }
   else {;};
 }
