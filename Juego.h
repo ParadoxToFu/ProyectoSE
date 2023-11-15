@@ -32,6 +32,9 @@ extern CRGB roj;
 extern CRGB apa;
 extern CRGB leds[NUM_LEDS];
 extern LiquidCrystal lcd;
+extern int presionado;
+extern int xPosition;
+extern int yPosition;
 
 void IRAM_ATTR button();
 void inicio();
@@ -40,8 +43,5 @@ void recorrido(int a[], CRGB b[]);
 void comprobacion(int a[], int b[], int c, int d);
 void gameover();
 int  play();
-extern int presionado;
-extern int xPosition;
-extern int yPosition;
 
 #endif
