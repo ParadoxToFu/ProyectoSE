@@ -16,12 +16,12 @@
 #define random      10  //posiciones ganadoras
 #define largolcd    16  //cambiar a 20
 #define altolcd     2   //Cambiar a 4
-#define rs          22  //pines lcd
+#define rs          21  //pines lcd
 #define en          23
-#define d4          5
-#define d5          18
-#define d6          19
-#define d7          21
+#define d4          18
+#define d5          19
+#define d6          5
+#define d7          17
 
 //CRGB ver=(19,100,14);
 //CRGB ama=(255,255,0);
