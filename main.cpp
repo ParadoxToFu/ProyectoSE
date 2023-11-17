@@ -1,27 +1,5 @@
 #include "juego.h"
-
-int color=0;
-
-void detalle(){
-  if (color==1)
-  {
-    for (int i = 0; i< NUM_LEDS; i++)
-    {
-      leds[i] = azu;
-      delay(5);
-    }
-    color=0;
-  }
-  else
-  {
-    for (int i = 0; i< NUM_LEDS; i++)
-    {
-      leds[i] = nar;
-      delay(5);
-    }
-    color=1;
-  };
-}
+#include <Wire.h>
 
 void setup() {
     Serial.begin(9600);
@@ -34,66 +12,77 @@ void setup() {
     attachInterrupt(digitalPinToInterrupt(buttonPin),button,FALLING);
 }
 
-void loop() { //Menu
+void loop()//Menu
+{ 
   int i=0;
   lcd.clear();
-  lcd.setCursor(0,0);
+  lcd.setCursor(5,0);
   lcd.print("BIENVENIDO");
   delay(2000);
   lcd.clear();
   lcd.setCursor(0,0);
+  lcd.print("SELECCIONE:");
+  delay(2000);
+  lcd.setCursor(0,1);
   lcd.print(">");
-    lcd.setCursor(1,0);
-    lcd.print(" S A L D O ");
     lcd.setCursor(1,1);
+    lcd.print(" S A L D O ");
+    lcd.setCursor(1,2);
     lcd.print(" J U G A R");
-    delay(2000);
-  while(presionado==0){
+  while(presionado==0)
+  {
     xPosition = analogRead(xPin);
     yPosition = analogRead(yPin);
     //Serial.print(xPosition);
     //Serial.print(yPosition);
-    //delay(1000);
-    if (xPosition>=3000 || yPosition>=3000)//joystic hacia la derecha o abajo = movimiento hacia abajoxPosition>=4000 || yPosition>=4000
-    {
+    //delay(2000);
+    if (yPosition<=2000){//arriba(xPosition<=2000)derecha
       i=0;
       lcd.clear();
       lcd.setCursor(0,0);
-      lcd.print(">");
-      lcd.setCursor(1,0);
-      lcd.print(" S A L D O ");
-      lcd.setCursor(1,1);
-      lcd.print(" J U G A R");
-      delay(100);
-    }
-    if (xPosition<=1000 || yPosition<=1000)//joystic hacia la izquierda o arriba = movimiento hacia arribaxPosition<=2000 || yPosition<=2000
-    {
-      i=1;
-      lcd.clear();
+      lcd.print("SELECCIONE:");
       lcd.setCursor(0,1);
       lcd.print(">");
-      lcd.setCursor(1,0);
-      lcd.print(" S A L D O ");
       lcd.setCursor(1,1);
+      lcd.print(" S A L D O ");
+      lcd.setCursor(1,2);
       lcd.print(" J U G A R");
       delay(100);
     }
-    else {;};
-  };
-  if (i==1){
-    int a=play();
-    //lcd.clear();
-    //lcd.setCursor(0,0);
-    //lcd.print("A JUGAR");
-    //delay(2000);
-    presionado=0;
+    if (yPosition>=3500){//abajoarribax(xPosition>=3500)Izquierda
+      i=1;
+      lcd.clear();
+      lcd.setCursor(0,0);
+      lcd.print("SELECCIONE:");
+      lcd.setCursor(0,2);
+      lcd.print(">");
+      lcd.setCursor(1,1);
+      lcd.print(" S A L D O ");
+      lcd.setCursor(1,2);
+      lcd.print(" J U G A R");
+      delay(100);
+    }
+    //else{;};
   }
-  if (i==0){
+  if (i==1){
+    lcd.clear();
+    lcd.setCursor(0,0);
+    lcd.print("A JUGAR");
+    presionado=0;
+    delay(1000);
+    int z=1;
+    while (z==1){
+    z=play();
+    }
+    printf("Fin del programa\n%i\n",z);
+    delay(2000);
+  }
+  if (i==0)
+  {
+    presionado=0;
     lcd.clear();
     lcd.setCursor(0,0);
     lcd.print("EN DESARROLLO");
     delay(2000);
-    presionado=0;
   }
-  else {;};
 }
