@@ -10,18 +10,18 @@
 #define buttonPin   32
 #define xPin        34
 #define yPin        35
-#define LED_PIN     22   //Pin de la tira WS2812
+#define LED_PIN     15   //Pin de la tira WS2812
 #define NUM_LEDS    30  //Numero de leds en la tira
 #define marcas      4   //posiciones a jugar dadas por el usuario
 #define random      10  //posiciones ganadoras
-#define largolcd    16  //cambiar a 20
-#define altolcd     2   //Cambiar a 4
-#define rs          21  //pines lcd
+#define largolcd    20  //cambiar a 20
+#define altolcd     4   //Cambiar a 4
+#define rs          22  //pines lcd
 #define en          23
 #define d4          18
 #define d5          19
 #define d6          5
-#define d7          17
+#define d7          21
 
 //CRGB ver=(19,100,14);
 //CRGB ama=(255,255,0);
