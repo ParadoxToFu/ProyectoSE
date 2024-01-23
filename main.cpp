@@ -1,4 +1,5 @@
 #include "juego.h"
+#include "RFIDReader.h"
 #include <Wire.h>
 
 void setup() {
